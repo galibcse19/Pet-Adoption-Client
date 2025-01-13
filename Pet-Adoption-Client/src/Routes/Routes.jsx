@@ -7,6 +7,8 @@ import Register from "../Pages/Register/Register";
 import LogIn from "../Pages/LogIn/LogIn";
 import PetListing from "../Pages/PetListing/PetListing";
 import DonationCampaigns from "../Pages/DonationCampaigns/DonationCampaigns";
+import PrivateRoutes from "./PrivateRoutes";
+import Dashboard from "../Layout/Dashboard";
  
 
   export const router = createBrowserRouter([
@@ -35,6 +37,10 @@ import DonationCampaigns from "../Pages/DonationCampaigns/DonationCampaigns";
             element:<Register></Register>
         }
       ]
+    },
+    {
+        path:'dashboard',
+        element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>
     }
   ]);
   

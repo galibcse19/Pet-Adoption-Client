@@ -1,4 +1,4 @@
- import React from 'react';
+ import React, { useContext } from 'react';
  import {
    Navbar,
    MobileNav,
@@ -8,9 +8,20 @@
    Card,
  } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProviders';
+import { toast } from 'react-toastify';
  
  const Nav = () => {
     const [openNav, setOpenNav] = React.useState(false);
+    const {user,logOut} = useContext(AuthContext)
+
+    const handleLogOut = () =>{
+      logOut()
+      .then(()=>{
+        toast.warn('Successfully LogOut.',{position: "top-center"});
+      })
+      .catch(error =>console.log(error))
+  }
  
     React.useEffect(() => {
       window.addEventListener(
@@ -21,11 +32,40 @@ import { Link } from 'react-router-dom';
      
     const navList = (
       <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-         <Link to={'/'}>Home</Link>
-      <Link to={'/petListing'}>Pet Listing</Link>
-      <Link to={'/donationCampaigns'}>Donation Campaigns</Link>
-      <Link to={'/login'}>Log In</Link>
-      <Link to={'/register'}>Register</Link>
+          <Link to={'/'}>Home</Link>
+          <Link to={'/petListing'}>Pet Listing</Link>
+          <Link to={'/donationCampaigns'}>Donation Campaigns</Link>
+        {
+          user ? <>
+          <li>
+         <div className="relative group">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-300">
+                  {user && user?.email ? (
+                    <img
+                      src={user?.photoURL}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center w-full h-full bg-gray-300 text-gray-700 font-bold">
+                      ?
+                    </div>
+                  )}
+                </div>
+              {user && (
+                <span className="absolute lg:left-100 lg:-right-10  top-12 bg-gray-800 text-white text-sm px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                   <Link to={'/dashboard'}> <p className='text-xl p-2'>Dashboard</p> </Link>
+                   <button onClick={handleLogOut} className='btn btn-ghost p-2 font-bold'>LOGOUT</button>
+                </span>
+              )}
+          </div>
+         </li>
+          </> : <>
+          <Link to={'/login'}>Log In</Link>
+          <Link to={'/register'}>Register</Link>
+          </>
+        }
+         
       </ul>
     );
     return (

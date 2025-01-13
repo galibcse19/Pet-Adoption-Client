@@ -19,6 +19,10 @@ const Register = () => {
         const email = form.email.value;
         const photo = form.url.value;
         const password = form.password.value;
+        const role = "user";
+        
+        const userInfo = {name,email,photo,role};
+        console.log(userInfo)
 
         // Password validation check
         const isValidPassword = validatePassword(password);
@@ -37,6 +41,23 @@ const Register = () => {
             console.log(user);
             updateUserProfile({displayName:name,photoURL:photo})
             .then(()=>{
+
+
+                fetch('http://localhost:5000/users',{
+                    method: 'POST',
+                    headers:{
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                .then(res => res.json())
+                .then(data =>{
+                    console.log(data);
+                    // if(data.insertedId){
+                    //     toast.success('Data Submit sucessfull',{position: "top-center"});
+                    // }
+                })
+
                 setUser((prevUser) => ({
                     ...prevUser,
                     displayName: name,
