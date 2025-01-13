@@ -3,6 +3,10 @@ import {
   } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
+import Register from "../Pages/Register/Register";
+import LogIn from "../Pages/LogIn/LogIn";
+import PetListing from "../Pages/PetListing/PetListing";
+import DonationCampaigns from "../Pages/DonationCampaigns/DonationCampaigns";
  
 
   export const router = createBrowserRouter([
@@ -14,6 +18,22 @@ import Home from "../Pages/Home/Home";
             path:'/',
             element:<Home></Home>
         },
+        {
+            path:'/petListing',
+            element:<PetListing></PetListing>
+        },
+        {
+            path:'/donationCampaigns',
+            element:<DonationCampaigns></DonationCampaigns>
+        },
+        {
+            path:'/login',
+            element:<LogIn></LogIn>
+        },
+        {
+            path:'/register',
+            element:<Register></Register>
+        }
       ]
     }
   ]);

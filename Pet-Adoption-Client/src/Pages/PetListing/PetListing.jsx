@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Footer = () => {
+const PetListing = () => {
     return (
         <div>
-            footer
+            Pet Listing
         </div>
     );
 };
 
-export default Footer;
+export default PetListing;
