@@ -69,8 +69,8 @@ import { toast } from 'react-toastify';
       </ul>
     );
     return (
-      <div className=" bg-black text-white">
-      <Navbar className="sticky top-0 z-10  rounded-none px-4 py-2 lg:px-8 lg:py-4">
+      <div className="">
+      <Navbar className="sticky top-0 z-10  rounded-none px-4 py-2 lg:px-8 lg:py-4 bg-black text-white">
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
