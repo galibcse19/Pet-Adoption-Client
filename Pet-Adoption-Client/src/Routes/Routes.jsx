@@ -16,12 +16,14 @@ import CreateDonationCampaign from "../UserDashboard/CreateDonationCampaign";
 import MyDonationCampaigns from "../UserDashboard/MyDonationCampaigns";
 import MyDonations from "../UserDashboard/MyDonations";
 import PetDetails from "../Pages/PetListing/PetDetails";
+import ErrorPage from "../ErrorPage/ErrorPage";
  
 
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:'/',
@@ -33,7 +35,7 @@ import PetDetails from "../Pages/PetListing/PetDetails";
         },
         {
           path:'/petDetails/:id',
-          element:<PetDetails></PetDetails>
+          element:<PrivateRoutes><PetDetails></PetDetails></PrivateRoutes>
         },
         {
             path:'/donationCampaigns',

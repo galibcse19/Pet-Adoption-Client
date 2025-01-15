@@ -105,32 +105,32 @@ const AddAPet = () => {
                         </div>
                         <input required name="name" type="text" placeholder="Enter Pet Name" className="input input-bordered lg:w-[90%] w-full p-2 rounded"/>
                     </label>
-                    <label className="form-control w-full my-2">
-                        <div className="label">
+                    <label className="form-control w-full">
+                        <div className="label mt-1">
                             <span className="label-text text-white ">Pet Image:</span>
                         </div>
                         <input type="file"  name="image" className="input input-bordered lg:w-[90%] w-full p-2 rounded" />
                     </label>
                     <label className="form-control w-full">
-                        <div className="label">
+                        <div className="label mt-1">
                             <span className="label-text text-white">Pet Age:</span>
                         </div>
                         <input required name="age" type="number" placeholder="Enter Pet Age" className="input input-bordered lg:w-[90%] w-full p-2 rounded"/>
                     </label>
                     <label className="form-control w-full my-2">
-                        <div className="label">
+                        <div className="label mt-1">
                             <span className="label-text text-white">Your Email:</span>
                         </div>
                         <input required name="email" type="text" disabled value={user.email}  className="input input-bordered lg:w-[90%] w-full p-2 rounded"/>
                     </label>
                     <label className="form-control w-full">
-                        <div className="label">
+                        <div className="label mt-1">
                             <span className="label-text text-white">Adoption:</span>
                         </div>
                         <input required name="adoption" type="text" disabled value={adoption}  className="input input-bordered lg:w-[90%] w-full p-2 rounded"/>
                     </label>
                     <label className="form-control w-full">
-                <div className="label">
+                <div className="labe mt-1l">
                     <span className="label-text text-white">Time (Bangladesh):</span>
                 </div>
                 <input
@@ -159,19 +159,19 @@ const AddAPet = () => {
                                     </select>
                      </label>
                      <label className="form-control w-full">
-                        <div className="label">
+                        <div className="label mt-1">
                             <span className="label-text text-white">Pet Location:</span>
                         </div>
                         <input required name="location" type="text" placeholder="Enter Pet Location" className="input input-bordered lg:w-[90%] w-full p-2 rounded"/>
                     </label>
                      <label className="form-control w-full">
-                        <div className="label">
+                        <div className="label mt-1">
                             <span className="label-text text-white">Short Describption:</span>
                         </div>
                         <input required name="shortDescribption" type="text" placeholder="Enter Pet Describption" className="input input-bordered lg:w-[90%] w-full p-2 rounded"/>
                     </label>
                      <label className="form-control w-full">
-                        <div className="label">
+                        <div className="label mt-1">
                             <span className="label-text text-white">Long Describption:</span>
                         </div>
                         <textarea
@@ -182,7 +182,7 @@ const AddAPet = () => {
                         ></textarea>
                     </label>
                     <label className="form-control w-full">
-                        <div className="label">
+                        <div className="label mt-1">
                             <span className="label-text text-white">Date:</span>
                         </div>
                         <input
@@ -205,6 +205,7 @@ const AddAPet = () => {
                                </button>
                  </label>
             </form>
+            {error && <p className="text-red-500 text-center mt-4">{error}</p>}
         </div>
     );
 };
