@@ -9,6 +9,12 @@ import PetListing from "../Pages/PetListing/PetListing";
 import DonationCampaigns from "../Pages/DonationCampaigns/DonationCampaigns";
 import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "../Layout/Dashboard";
+import AddAPet from "../UserDashboard/AddAPet";
+import Myaddedpets from "../UserDashboard/Myaddedpets";
+import AdoptionRequest from "../UserDashboard/AdoptionRequest";
+import CreateDonationCampaign from "../UserDashboard/CreateDonationCampaign";
+import MyDonationCampaigns from "../UserDashboard/MyDonationCampaigns";
+import MyDonations from "../UserDashboard/MyDonations";
  
 
   export const router = createBrowserRouter([
@@ -40,7 +46,33 @@ import Dashboard from "../Layout/Dashboard";
     },
     {
         path:'dashboard',
-        element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>
+        element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
+        children:[
+          {
+            path:'addAPet',
+            element:<AddAPet></AddAPet>
+          },
+          {
+            path:'myAddedPets',
+            element:<Myaddedpets></Myaddedpets>
+          },
+          {
+            path:'adoptionRequest',
+            element:<AdoptionRequest></AdoptionRequest>
+          },
+          {
+            path:'createDonationCampaign',
+            element:<CreateDonationCampaign></CreateDonationCampaign>
+          },
+          {
+            path:'MyDonationCamaigns',
+            element:<MyDonationCampaigns></MyDonationCampaigns>
+          },
+          {
+            path:'myDonations',
+            element:<MyDonations></MyDonations>
+          }
+        ]
     }
   ]);
   
