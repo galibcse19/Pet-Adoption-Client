@@ -17,6 +17,7 @@ import MyDonationCampaigns from "../UserDashboard/MyDonationCampaigns";
 import MyDonations from "../UserDashboard/MyDonations";
 import PetDetails from "../Pages/PetListing/PetDetails";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import DonateCampaignDetails from "../Pages/DonationCampaigns/DonateCampaignDetails";
  
 
   export const router = createBrowserRouter([
@@ -40,6 +41,10 @@ import ErrorPage from "../ErrorPage/ErrorPage";
         {
             path:'/donationCampaigns',
             element:<DonationCampaigns></DonationCampaigns>
+        },
+        {
+          path:'/donateCampaignDetails/:id',
+          element:<PrivateRoutes><DonateCampaignDetails></DonateCampaignDetails></PrivateRoutes>
         },
         {
             path:'/login',
