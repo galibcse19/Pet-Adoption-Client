@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import DynamicTitle from '../../Shared/DynamicTitle';
 import { AuthContext } from '../../Providers/AuthProviders';
+import { toast } from 'react-toastify';
 
 const DonateCampaignDetails = () => {
     const location = useLocation();
@@ -10,8 +11,35 @@ const DonateCampaignDetails = () => {
     const {user} = useContext(AuthContext);
     const {error, setError} = useState('');
 
-    const handleSubmit =()=>{
-        
+    const handleSubmit =(event)=>{
+        event.preventDefault();
+        const form = event.target;
+        const donatePetID = data._id;
+        const donerName = user.displayName;
+        const donerEmail = user.email;
+        const donateAmount =form.donateAmount.value;
+        const donateData= {donatePetID,donerName,donerEmail,donateAmount};
+        // console.log(donateData);
+
+        fetch('http://localhost:5000/donateData',{
+                    method: 'POST',
+                    headers:{
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(donateData)
+                })
+                .then(res => res.json())
+                .then(data =>{
+                    if(data.insertedId){
+                        toast.success(`Donate ${donateAmount}Tk Successfully.`,{position: "top-center"});
+                    }
+                })
+                // .catch(error => console.log(error.message));
+                .catch(error =>{
+                    setError(error.message)
+                });
+
+        setIsModalOpen(false);
     }
 
     return (
@@ -83,30 +111,17 @@ const DonateCampaignDetails = () => {
                             </div>
                             <div className="mb-4">
                                 <label className="block font-medium mb-2" htmlFor="email">
-                                    Your Phone Number
+                                    Your Donate Amount
                                 </label>
                                 <input
                                     type="number"
-                                    id="email"
-                                    name="number"
-                                    placeholder='Enter your phone number'
+                                    name="donateAmount"
+                                    placeholder='Donate Amount'
                                     className="w-full p-2 border rounded-lg"
                                     required
                                 />
                             </div>
-                            <div className="mb-4">
-                                <label className="block font-medium mb-2" htmlFor="email">
-                                    Your Address
-                                </label>
-                                <input
-                                    type="text"
-                                    id="email"
-                                    name="address"
-                                    placeholder='Enter your address'
-                                    className="w-full p-2 border rounded-lg"
-                                    required
-                                />
-                            </div>
+                             
                              
                             <div className="flex justify-end">
                                 <button
@@ -120,7 +135,7 @@ const DonateCampaignDetails = () => {
                                     type="submit"
                                     className="bg-black text-white px-4 py-2 rounded-md"
                                 >
-                                    Submit
+                                    Donate
                                 </button>
                             </div>
                         </form>
