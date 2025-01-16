@@ -82,7 +82,7 @@ const DonationCampaigns = () => {
                                     </div>
                                     <button
                                         onClick={() => handleDetails(data)}
-                                        className="w-full font-bold lg:p-4 md:p-4 p-2 bg-black text-white rounded-md hover:bg-red-600 transition duration-200"
+                                        className="w-full font-bold lg:p-4 md:p-4 p-2 text-white rounded-md bg-red-600 hover:bg-red-700 transition duration-200"
                                     >
                                         View Details
                                     </button>

@@ -92,7 +92,7 @@ const PetListing = () => {
                                 </div>
                                 <button
                                     onClick={() => handleDetails(data)} // Pass the entire data object
-                                    className="w-full font-bold lg:p-4 md:p-4 p-2 bg-black text-white rounded-md hover:bg-red-600 transition duration-200"
+                                    className="w-full font-bold lg:p-4 md:p-4 p-2  bg-red-600 hover:bg-red-700 text-white rounded-md transition duration-200"
                                 >
                                     View Details
                                 </button>

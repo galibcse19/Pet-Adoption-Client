@@ -69,7 +69,7 @@ const DonateCampaignDetails = () => {
                             <strong>Last Date of Donation:</strong> {data.lastDateOfDonation}
                         </p>
                         <button
-                            className="w-1/2 font-bold lg:p-4 md:p-4 p-2 bg-black text-white rounded-md hover:bg-red-600 transition duration-200 mt-4"
+                            className="w-1/2 font-bold lg:p-4 md:p-4 p-2 text-white rounded-md bg-red-600 hover:bg-red-700 transition duration-200 mt-4"
                             onClick={() => setIsModalOpen(true)} // Open modal
                         >
                             Donate Now
