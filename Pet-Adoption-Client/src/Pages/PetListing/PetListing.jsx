@@ -39,8 +39,8 @@ const PetListing = () => {
         const filteredPets = pets.filter((pet) => {
             const matchesSearch = pet.name.toLowerCase().includes(searchTerm.toLowerCase());
             const matchesCategory = selectedCategory === 'All' || pet.category === selectedCategory;
-            const notAdopted = pet.adoption === 'false'; // Check for string "false"
-            return matchesSearch && matchesCategory && notAdopted;
+            // const notAdopted = pet.adoption === 'flase' ; // Check for string "false"
+            return matchesSearch && matchesCategory ;
         });
     
         setDisplayedPets(filteredPets.slice(0, page * 10));

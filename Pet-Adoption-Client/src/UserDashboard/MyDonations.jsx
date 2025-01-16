@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProviders';
 import Swal from 'sweetalert2';
+import DynamicTitle from '../Shared/DynamicTitle';
 
 const MyDonations = () => {
     const { user } = useContext(AuthContext);
@@ -60,8 +61,8 @@ const MyDonations = () => {
 
     return (
         <div className="container mx-auto p-5">
-            <h1 className="text-2xl font-bold mb-4">My Donations</h1>
-            <p className="text-lg font-semibold mb-4">
+            <DynamicTitle heading={'My Donations'}></DynamicTitle>
+            <p className="text-lg font-semibold my-6">
                 Total Donation Amount: <span className="text-red-600">{totalDonation} Tk</span>
             </p>
             {userDonations.length > 0 ? (
