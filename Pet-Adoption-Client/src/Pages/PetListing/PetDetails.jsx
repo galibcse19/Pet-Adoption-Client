@@ -18,11 +18,12 @@ const PetDetails = () => {
         const adoptID = data._id;
         const name = data.name;
         const image = data.imageUrl;
+        const petAddedPersonEmail= data.email;
         const adptionUserName = user?.displayName;
         const adptionUserEmail = user?.email;
         const adptionUserNumber =form.number.value;
         const adptionUserAddress =form.address.value;
-        const adoptData= {adoptID,name,image,adptionUserName,adptionUserEmail,adptionUserNumber,adptionUserAddress};
+        const adoptData= {adoptID,name,image,adptionUserName,petAddedPersonEmail,adptionUserEmail,adptionUserNumber,adptionUserAddress};
         // console.log(adoptData)
         fetch('http://localhost:5000/adoptRequest',{
             method: 'POST',

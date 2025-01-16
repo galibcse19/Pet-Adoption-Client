@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DynamicTitle from '../../Shared/DynamicTitle';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const VolunteerSupportSection = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+
+    useEffect(() => {
+        AOS.init({
+        duration: 1000, 
+        once: true, 
+        });
+    }, []);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -12,10 +21,10 @@ const VolunteerSupportSection = () => {
         console.log("Form submitted:", { name, email, message });
     };
     return (
-        <div className='my-10'>
+        <div className='mt-10'>
             <DynamicTitle heading={'Volunteer & Support Us'}></DynamicTitle>
             <div className="bg-gray-100 py-12">
-            <div className="lg:flex lg:justify-between lg:mx-32 md:mx-10 mx-4">
+            <div data-aos="zoom-in" className="lg:flex lg:justify-between lg:mx-32 md:mx-10 mx-4">
                 {/* Left Column */}
                 <div className="lg:w-1/2 p-6 bg-white rounded-lg shadow-md">
                     <h3 className="text-3xl font-bold text-gray-800 mb-4">How You Can Help</h3>
