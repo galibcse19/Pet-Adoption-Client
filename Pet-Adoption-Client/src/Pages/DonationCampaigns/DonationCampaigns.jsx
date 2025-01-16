@@ -34,14 +34,14 @@ const DonationCampaigns = () => {
     }, []);
 
     // Update displayed campaigns when the page changes
-    useEffect(() => {
-        const startIndex = (page - 1);
-        const endIndex = page * 6;
-        setDisplayedData((prevData) => [
-            ...prevData,
-            ...donationCampaignData.slice(startIndex, endIndex),
-        ]);
-    }, [page, donationCampaignData]);
+    // useEffect(() => {
+    //     const startIndex = (page - 1);
+    //     const endIndex = page ;
+    //     setDisplayedData((prevData) => [
+    //         ...prevData,
+    //         ...donationCampaignData.slice(startIndex, endIndex),
+    //     ]);
+    // }, [page, donationCampaignData]);
 
     // Navigate to details page
     const handleDetails = (data) => {

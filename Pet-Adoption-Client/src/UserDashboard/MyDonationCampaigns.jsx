@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import DynamicTitle from '../Shared/DynamicTitle';
 import { AuthContext } from '../Providers/AuthProviders';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const MyDonationCampaigns = () => {
     const { user } = useContext(AuthContext); // Authenticated user context
@@ -8,6 +10,7 @@ const MyDonationCampaigns = () => {
     const [selectedDonators, setSelectedDonators] = useState([]); // Donators for the modal
     const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility
     const [totalDonation, setTotalDonation] = useState(0);
+    const navigate = useNavigate();
 
     // console.log(totalDonation)
 
@@ -36,6 +39,7 @@ const MyDonationCampaigns = () => {
 
     // Handle pause/unpause functionality
     const handlePause = (id, status) => {
+        toast.success('Pause This Campaign.', { position: 'top-center' });
         fetch(`http://localhost:5000/donationCampaign/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -44,6 +48,7 @@ const MyDonationCampaigns = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount > 0) {
+                    // toast.success('Pause This Campaign.', { position: 'top-center' });
                     setMyCampaign((prev) =>
                         prev.map((campaign) =>
                             campaign._id === id ? { ...campaign, paused: !status } : campaign
@@ -58,13 +63,17 @@ const MyDonationCampaigns = () => {
         setIsModalOpen(false);
         setSelectedDonators([]);
     };
+    const handleUpdate =(campaign)=>{
+        // console.log(campaign);
+        navigate(`/dashboard/MyDonationCamaigns/updateCampaign/${campaign._id}`, { state: { campaign } });
+    }
 
     return (
         <div className="my-10">
             <DynamicTitle heading="My Donation Campaigns" />
 
             {/* Campaign Table */}
-            <div className="overflow-x-auto mx-10">
+            <div className="overflow-x-auto mx-10 mt-6">
                 <table className="table-auto w-full border border-gray-300 text-center">
                     <thead>
                         <tr className="bg-gray-100">
@@ -82,14 +91,13 @@ const MyDonationCampaigns = () => {
                                     <button
                                         onClick={() => handlePause(campaign._id, campaign.paused)}
                                         className={`px-4 py-2 rounded text-white ${
-                                            campaign.paused ? 'bg-yellow-500' : 'bg-blue-500'
+                                            campaign.paused ? 'bg-yellow-500' : 'bg-green-500'
                                         }`}
                                     >
                                         {campaign.paused ? 'Unpause' : 'Pause'}
                                     </button>
                                     <button
-                                        onClick={() =>
-                                            (window.location.href = `/editDonation/${campaign._id}`)
+                                        onClick={() =>handleUpdate(campaign)
                                         }
                                         className="px-4 py-2 bg-green-500 text-white rounded"
                                     >
@@ -97,7 +105,7 @@ const MyDonationCampaigns = () => {
                                     </button>
                                     <button
                                         onClick={() => handleViewDonators(campaign._id)}
-                                        className="px-4 py-2 bg-purple-500 text-white rounded"
+                                        className="px-4 py-2 bg-green-500 text-white rounded"
                                     >
                                         View Donators
                                     </button>
