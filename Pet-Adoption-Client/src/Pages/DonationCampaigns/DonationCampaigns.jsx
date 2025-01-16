@@ -35,7 +35,7 @@ const DonationCampaigns = () => {
 
     // Update displayed campaigns when the page changes
     useEffect(() => {
-        const startIndex = (page - 1) * 6;
+        const startIndex = (page - 1);
         const endIndex = page * 6;
         setDisplayedData((prevData) => [
             ...prevData,
