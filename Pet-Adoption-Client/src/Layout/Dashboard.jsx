@@ -6,7 +6,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProviders';
 import Lottie from 'lottie-react';
 import dashboardImg from '../assets/dashboard.json'
-import { FaBandcamp, FaListCheck } from 'react-icons/fa6';
+import { FaBandcamp, FaListCheck, FaUsers } from 'react-icons/fa6';
 import { IoIosAddCircle } from 'react-icons/io';
 import { SiMercadopago } from 'react-icons/si';
 import { FaDonate } from 'react-icons/fa';
@@ -24,6 +24,13 @@ const Dashboard = () => {
                 <div className='bg-gray-800 text-white min-h-screen'>
                     <div className='px-6 py-4'>
                          
+                         <div className='flex items-center my-4'>
+                            <span className='mr-2'><FaUsers /></span>
+                                <Link onClick={() => setShowOutlet(true)} to={'/dashboard/users'}>All User</Link>
+                            </div>
+
+
+
                            <div className='flex items-center my-4'>
                             <span className='mr-2'><IoIosAddCircle /></span>
                                 <Link onClick={() => setShowOutlet(true)} to={'/dashboard/addAPet'}>Add A Pet</Link>

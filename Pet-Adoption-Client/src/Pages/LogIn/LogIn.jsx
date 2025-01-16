@@ -87,7 +87,10 @@ const LogIn = () => {
                     Don't have an Account? <a className="font-bold" href="/register">Register</a>
                 </p>
                 <p className='my-4 text-center'>OR</p>
-                <p><button onClick={handelGoogleSignIn} className="w-full font-bold lg:p-4 md:p-4 p-2 bg-red-600 text-white rounded-md hover:bg-gray-800">Log in with Google</button></p>
+                <div className='grid grid-cols-2 gap-2'>
+                    <p><button onClick={handelGoogleSignIn} className="w-full font-bold lg:p-4 md:p-4 p-2 text-white bg-red-600 rounded-md hover:bg-gray-800">Google</button></p>
+                    <p><button onClick={handelGoogleSignIn} className="w-full font-bold lg:p-4 md:p-4 p-2 text-white bg-red-600 rounded-md hover:bg-gray-800">Facebook</button></p>
+                </div>
                 </div>
 
             </div>

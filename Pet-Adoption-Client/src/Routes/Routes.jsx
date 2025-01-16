@@ -20,6 +20,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import DonateCampaignDetails from "../Pages/DonationCampaigns/DonateCampaignDetails";
 import UpdateAPet from "../UserDashboard/UpdateAPet";
 import UpdateCampaign from "../UserDashboard/UpdateCampaign";
+import Users from "../AdminDashboard/Users";
  
 
   export const router = createBrowserRouter([
@@ -65,6 +66,10 @@ import UpdateCampaign from "../UserDashboard/UpdateCampaign";
           {
             path:'addAPet',
             element:<AddAPet></AddAPet>
+          },
+          {
+            path:'users',
+            element:<Users></Users>
           },
           {
             path:'myAddedPets',
