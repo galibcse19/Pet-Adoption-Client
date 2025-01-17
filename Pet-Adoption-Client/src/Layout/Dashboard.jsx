@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { IoBagAdd, IoCreate, IoHome } from 'react-icons/io5';
 import { MdCampaign, MdDashboard, MdOutlinePets } from "react-icons/md";
@@ -14,6 +14,17 @@ import { FaDonate } from 'react-icons/fa';
 const Dashboard = () => {
     const {user} = useContext(AuthContext);
     const [showOutlet, setShowOutlet] = useState(false);
+    const [userData,setUserData] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/users') // Replace with your backend endpoint
+          .then((res) => res.json())
+          .then((data) => {
+            const currentUser = data.find((u) => u.email === user.email);
+            setUserData(currentUser);
+          });
+      }, [user]);
+    
+    // console.log(userData.role);
     return (
         <div>
             <div className='flex items-center px-6 py-4 bg-black text-white'>
@@ -23,16 +34,23 @@ const Dashboard = () => {
             <div className='grid grid-cols-5'>
                 <div className='bg-gray-800 text-white min-h-screen'>
                     <div className='px-6 py-4'>
-                         
-                         <div className='flex items-center my-4'>
-                            <span className='mr-2'><FaUsers /></span>
-                                <Link onClick={() => setShowOutlet(true)} to={'/dashboard/users'}>All User</Link>
-                            </div>
-                         <div className='flex items-center my-4'>
-                            <span className='mr-2'><MdOutlinePets /></span>
-                                <Link onClick={() => setShowOutlet(true)} to={'/dashboard/allPets'}>All Pet</Link>
-                            </div>
 
+                    {userData.role === 'admin' && (
+                        <>
+                            <div className='flex items-center my-4'>
+                            <span className='mr-2'><FaUsers /></span>
+                            <Link onClick={() => setShowOutlet(true)} to={'/dashboard/users'}>All Users</Link>
+                            </div>
+                            <div className='flex items-center my-4'>
+                            <span className='mr-2'><MdOutlinePets /></span>
+                            <Link onClick={() => setShowOutlet(true)} to={'/dashboard/allPets'}>All Pets</Link>
+                            </div>
+                            <div className='flex items-center my-4'>
+                            <span className='mr-2'><FaDonate /></span>
+                            <Link onClick={() => setShowOutlet(true)} to={'/dashboard/allDonationCampaigns'}>All Donation Campaigns</Link>
+                            </div>
+                        </>
+                        )}
 
 
                            <div className='flex items-center my-4'>
