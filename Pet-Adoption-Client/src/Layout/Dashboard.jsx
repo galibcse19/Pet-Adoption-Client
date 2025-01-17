@@ -35,7 +35,21 @@ const Dashboard = () => {
                 <div className='bg-gray-800 text-white min-h-screen'>
                     <div className='px-6 py-4'>
 
-                    {userData.role === 'admin' && (
+                     {
+                        userData?.role ==='admin' ? <>
+                            <div>
+                            <h2>Admin</h2>
+                            <hr />
+                            </div>
+                            </> : <>
+                            <div>
+                                <h2>User</h2>
+                            <hr />
+                            </div>
+                            </>
+                     }
+
+                    {userData?.role === 'admin' && (
                         <>
                             <div className='flex items-center my-4'>
                             <span className='mr-2'><FaUsers /></span>
