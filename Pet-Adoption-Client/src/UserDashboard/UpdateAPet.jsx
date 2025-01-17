@@ -46,7 +46,7 @@ const UpdateAPet = () => {
         };
         // console.log(updatedPet);
 
-        fetch(`http://localhost:5000/pets/${pet._id}`, {
+        fetch(`https://pet-adoption-server-jade.vercel.app/pets/${pet._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

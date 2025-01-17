@@ -10,7 +10,7 @@ const DonationCampaigns = () => {
 
     // Fetch donation campaigns
     useEffect(() => {
-        fetch('http://localhost:5000/donationCampaign')
+        fetch('https://pet-adoption-server-jade.vercel.app/donationCampaign')
             .then((res) => res.json())
             .then((data) => {
                 // Sort by date in descending order

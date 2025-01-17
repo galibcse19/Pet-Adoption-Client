@@ -15,7 +15,7 @@ const DonateCampaignDetails = () => {
 
     // Function to fetch donation campaigns
     const fetchDonationCampaigns = () => {
-        fetch('http://localhost:5000/donationCampaign')
+        fetch('https://pet-adoption-server-jade.vercel.app/donationCampaign')
             .then((res) => res.json())
             .then((data) => {
                 // Sort by lastDateOfDonation in ascending order
@@ -48,7 +48,7 @@ const DonateCampaignDetails = () => {
         const donateAmount = form.donateAmount.value;
         const donateData = { donatePetID, donerName, donerEmail, donateAmount,donatePetImage,donatePetName };
 
-        fetch('http://localhost:5000/donateData', {
+        fetch('https://pet-adoption-server-jade.vercel.app/donateData', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

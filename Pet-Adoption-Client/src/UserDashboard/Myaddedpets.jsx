@@ -12,7 +12,7 @@ const MyAddedPets = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/pets')
+        fetch('https://pet-adoption-server-jade.vercel.app/pets')
             .then((res) => res.json())
             .then((data) => {
                 // Filter pets by user email
@@ -23,7 +23,7 @@ const MyAddedPets = () => {
 
     const handleDelete = (id) => {
          
-            fetch(`http://localhost:5000/pets/${id}`, {
+            fetch(`https://pet-adoption-server-jade.vercel.app/pets/${id}`, {
                 method: 'DELETE',
             })
                 .then((res) => res.json())
@@ -36,7 +36,7 @@ const MyAddedPets = () => {
     };
 
     const handleAdopted = (id) => {
-        fetch(`http://localhost:5000/pets/${id}`, {
+        fetch(`https://pet-adoption-server-jade.vercel.app/pets/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

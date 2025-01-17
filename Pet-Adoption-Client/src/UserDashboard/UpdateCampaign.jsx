@@ -34,7 +34,7 @@ const UpdateCampaign = () => {
         lastDateOfDonation:lastDateOfDonation,
         imageUrl:imageUrl
     }
-    fetch(`http://localhost:5000/donationCampaign/${campaign._id}`, {
+    fetch(`https://pet-adoption-server-jade.vercel.app/donationCampaign/${campaign._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

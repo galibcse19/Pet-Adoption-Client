@@ -51,7 +51,7 @@ const CreateDonationCampaign = () => {
                   lastDateOfDonation,
                   imageUrl: data.data.url,
                 };
-                fetch('http://localhost:5000/donationCampaign',{
+                fetch('https://pet-adoption-server-jade.vercel.app/donationCampaign',{
                     method: 'POST',
                     headers:{
                         'content-type': 'application/json'

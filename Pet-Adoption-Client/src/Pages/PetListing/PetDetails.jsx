@@ -25,7 +25,7 @@ const PetDetails = () => {
         const adptionUserAddress =form.address.value;
         const adoptData= {adoptID,name,image,adptionUserName,petAddedPersonEmail,adptionUserEmail,adptionUserNumber,adptionUserAddress};
         // console.log(adoptData)
-        fetch('http://localhost:5000/adoptRequest',{
+        fetch('https://pet-adoption-server-jade.vercel.app/adoptRequest',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

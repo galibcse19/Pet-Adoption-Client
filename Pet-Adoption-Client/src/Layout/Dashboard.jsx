@@ -16,7 +16,7 @@ const Dashboard = () => {
     const [showOutlet, setShowOutlet] = useState(false);
     const [userData,setUserData] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/users') // Replace with your backend endpoint
+        fetch('https://pet-adoption-server-jade.vercel.app/users') // Replace with your backend endpoint
           .then((res) => res.json())
           .then((data) => {
             const currentUser = data.find((u) => u.email === user.email);
@@ -31,7 +31,7 @@ const Dashboard = () => {
                 <span className='mr-2 text-2xl'><MdDashboard /></span>
                 <h2 className='text-2xl'>Dashboard</h2>
             </div>
-            <div className='grid grid-cols-5'>
+            <div className='grid lg:grid-cols-5 md:grid-cols-5'>
                 <div className='bg-gray-800 text-white min-h-screen'>
                     <div className='px-6 py-4'>
 
@@ -108,7 +108,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className='col-span-4 bg-gradient-to-r from-cyan-500 to-blue-500 bg-opacity-50 text-black'>
+                <div className='lg:col-span-4 md:col-span-4 bg-gradient-to-r from-cyan-500 to-blue-500 bg-opacity-50 text-black'>
                     <div className="container mx-auto p-4">
                         {!showOutlet ? (
                             <div className="text-center">

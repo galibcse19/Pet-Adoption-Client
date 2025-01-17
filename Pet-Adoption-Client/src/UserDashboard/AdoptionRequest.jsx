@@ -8,7 +8,7 @@ const AdoptionRequest = () => {
     const [requestData, setRequestData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/adoptRequest')
+        fetch('https://pet-adoption-server-jade.vercel.app/adoptRequest')
             .then((res) => res.json())
             .then((data) => {
                 // Filter requests by petAddedPersonEmail matching the logged-in user's email
@@ -29,7 +29,7 @@ const AdoptionRequest = () => {
 
     const handleReject = (id) => {
         // Perform DELETE request directly
-        fetch(`http://localhost:5000/adoptRequest/${id}`, {
+        fetch(`https://pet-adoption-server-jade.vercel.app/adoptRequest/${id}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())

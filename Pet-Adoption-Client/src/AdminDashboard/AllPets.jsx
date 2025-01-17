@@ -9,14 +9,14 @@ const AllPets = () => {
 
   // Fetch all pets
   useEffect(() => {
-    fetch('http://localhost:5000/pets')
+    fetch('https://pet-adoption-server-jade.vercel.app/pets')
       .then((res) => res.json())
       .then((data) => setPets(data));
   }, []);
 
   // Handle delete pet
   const handleDelete = (id) => {
-        fetch(`http://localhost:5000/pets/${id}`, {
+        fetch(`https://pet-adoption-server-jade.vercel.app/pets/${id}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())
@@ -30,7 +30,7 @@ const AllPets = () => {
 
   // Handle toggle adoption status
   const handleToggleAdoption = (id, currentStatus) => {
-    fetch(`http://localhost:5000/pets/${id}`, {
+    fetch(`https://pet-adoption-server-jade.vercel.app/pets/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ adoption: !currentStatus }),

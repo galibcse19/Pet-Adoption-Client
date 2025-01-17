@@ -12,7 +12,7 @@ const PetListing = () => {
 
     // Fetch all pets
     useEffect(() => {
-        fetch('http://localhost:5000/pets')
+        fetch('https://pet-adoption-server-jade.vercel.app/pets')
             .then((res) => res.json())
             .then((data) => {
                 const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort pets

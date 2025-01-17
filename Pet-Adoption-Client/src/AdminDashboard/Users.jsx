@@ -7,7 +7,7 @@ const Users = () => {
 
     // Fetch user data
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://pet-adoption-server-jade.vercel.app/users')
             .then((res) => res.json())
             .then((data) => setUserData(data))
             .catch((err) => console.error('Error fetching users:', err));
@@ -15,7 +15,7 @@ const Users = () => {
 
     // Handle Make Admin
     const handleMakeAdmin = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://pet-adoption-server-jade.vercel.app/users/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

@@ -8,14 +8,14 @@ const AllDonationCampaigns = () => {
 
   // Fetch all donation campaigns
   useEffect(() => {
-    fetch('http://localhost:5000/donationCampaign')
+    fetch('https://pet-adoption-server-jade.vercel.app/donationCampaign')
       .then((res) => res.json())
       .then((data) => setDonationCampaigns(data));
   }, []);
 
   // Handle campaign deletion
   const handleDeleteCampaign = (id) => {
-    fetch(`http://localhost:5000/donationCampaign/${id}`, {
+    fetch(`https://pet-adoption-server-jade.vercel.app/donationCampaign/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -40,7 +40,7 @@ const AllDonationCampaigns = () => {
         `Campaign ${!currentStatus ? 'paused' : 'unpaused'} successfully!`,
         { position: 'top-center' }
       );
-    fetch(`http://localhost:5000/donationCampaign/${id}`, {
+    fetch(`https://pet-adoption-server-jade.vercel.app/donationCampaign/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ paused: !currentStatus }),

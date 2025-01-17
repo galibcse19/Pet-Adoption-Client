@@ -9,7 +9,7 @@ const MyDonations = () => {
     const [totalDonation, setTotalDonation] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:5000/donateData')
+        fetch('https://pet-adoption-server-jade.vercel.app/donateData')
             .then((res) => res.json())
             .then((data) => {
 
@@ -36,7 +36,7 @@ const MyDonations = () => {
                     confirmButtonText: "Yes, refund it!"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        fetch(`http://localhost:5000/donateData/${_id}`, {
+                        fetch(`https://pet-adoption-server-jade.vercel.app/donateData/${_id}`, {
                             method: 'DELETE',
                         })
                             .then(res => res.json())

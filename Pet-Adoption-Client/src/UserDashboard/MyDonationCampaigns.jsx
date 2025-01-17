@@ -16,7 +16,7 @@ const MyDonationCampaigns = () => {
 
     // Fetch campaigns for the logged-in user
     useEffect(() => {
-        fetch('http://localhost:5000/donationCampaign')
+        fetch('https://pet-adoption-server-jade.vercel.app/donationCampaign')
             .then((res) => res.json())
             .then((data) => {
                 const filteredData = data.filter((campaign) => campaign.email === user.email);
@@ -26,7 +26,7 @@ const MyDonationCampaigns = () => {
 
     // Handle viewing donators for a specific campaign
     const handleViewDonators = (campaignId) => {
-        fetch('http://localhost:5000/donateData')
+        fetch('https://pet-adoption-server-jade.vercel.app/donateData')
             .then((res) => res.json())
             .then((data) => {
                 const filteredDonators = data.filter((donator) => donator.donatePetID === campaignId);
@@ -40,7 +40,7 @@ const MyDonationCampaigns = () => {
     // Handle pause/unpause functionality
     const handlePause = (id, status) => {
         toast.success('Pause This Campaign.', { position: 'top-center' });
-        fetch(`http://localhost:5000/donationCampaign/${id}`, {
+        fetch(`https://pet-adoption-server-jade.vercel.app/donationCampaign/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ paused: !status }),

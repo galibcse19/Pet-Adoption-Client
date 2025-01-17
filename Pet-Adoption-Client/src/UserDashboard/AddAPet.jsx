@@ -64,7 +64,7 @@ const AddAPet = () => {
               date,
               imageUrl: data.data.url,
             };
-            fetch('http://localhost:5000/pets',{
+            fetch('https://pet-adoption-server-jade.vercel.app/pets',{
                 method: 'POST',
                 headers:{
                     'content-type': 'application/json'
