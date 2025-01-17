@@ -37,7 +37,7 @@ const Users = () => {
     };
 
     return (
-        <div className="my-10">
+        <div className="my-4">
             <DynamicTitle heading={'User List'}></DynamicTitle>
             <div className="overflow-x-auto mx-10 mt-6">
                 <table className="table-auto w-full border border-gray-300 text-center">

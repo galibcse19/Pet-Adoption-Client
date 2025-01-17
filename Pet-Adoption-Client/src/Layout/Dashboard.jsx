@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { IoBagAdd, IoCreate, IoHome } from 'react-icons/io5';
-import { MdCampaign, MdDashboard } from "react-icons/md";
+import { MdCampaign, MdDashboard, MdOutlinePets } from "react-icons/md";
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProviders';
 import Lottie from 'lottie-react';
@@ -27,6 +27,10 @@ const Dashboard = () => {
                          <div className='flex items-center my-4'>
                             <span className='mr-2'><FaUsers /></span>
                                 <Link onClick={() => setShowOutlet(true)} to={'/dashboard/users'}>All User</Link>
+                            </div>
+                         <div className='flex items-center my-4'>
+                            <span className='mr-2'><MdOutlinePets /></span>
+                                <Link onClick={() => setShowOutlet(true)} to={'/dashboard/allPets'}>All Pet</Link>
                             </div>
 
 

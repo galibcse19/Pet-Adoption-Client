@@ -2,22 +2,42 @@
 
 ## Live Link:  
 
-<!-- ## Purpose:
-This project is designed to manage services offered by a company. Users can view, add, update, and delete services. The system allows for seamless CRUD (Create, Read, Update, Delete) operations, making it easy to maintain an up-to-date list of services.
+## Purpose:
+- Facilitate seamless pet adoption through a user-friendly platform.
+- Provide a comprehensive list of donation campaigns and allow users to contribute easily.
+- Ensure transparency by showcasing donation progress for each campaign.
+- Allow users to manage their own campaigns and view donations securely.
+- Enhance user experience with features like infinite scrolling, filtering, and search.
+- Enable admin control for monitoring and managing users and donations effectively.
 
 ## Key Features:
-   - CRUD Operations: Users can add, update, and delete services.
-   - Real-time Data Fetching: Data is fetched and updated automatically using TanStack Query (React Query).
-   - Authentication: Implemented session-based authentication to protect certain operations (e.g., adding, updating, deleting services).
-   - Error Handling: Display appropriate messages when data is loading or if an error occurs during fetching.
+- Dynamic Pet Listing: Displays available pets with search and filter options by name and category.
+- Infinite Scrolling: Loads more pets as users scroll, enhancing user experience.
+- Donation Campaign Management: Users can view, edit, and manage their campaigns.
+- Progress Bar for Donations: Displays the percentage of progress for each campaign.
+- Donator Modal: View a list of donators with their donation details for a campaign.
+- Role Management: Includes "Make Admin" functionality to promote users to admin status.
+- Pause/Unpause Campaign: Temporarily disable or enable donation campaigns.
+- Responsive Design: Fully responsive UI optimized for desktop and mobile devices.
+- Authentication: Ensures secure access and personalized features for registered users.
+- Real-Time Updates: Reflects changes immediately (e.g., when a campaign is paused or user role is updated).
 
 ## npm Packages Used:
-   - react: The core library for building the UI.
-   - react-dom: The package used to render React components.
-   - @tanstack/react-query: For data fetching, caching, and synchronization.
-   - axios: For making HTTP requests.
-   - react-router-dom: For handling routing in the application.
-   - react-toastify: For showing notifications (e.g., success or error messages). -->
+- @material-tailwind/react: Simplifies Tailwind components with Material Design.
+- AOS: Adds smooth animations on scroll for UI elements.
+- Firebase: Manages authentication and real-time database functionality.
+- LocalForage: Enables offline data storage for enhanced app performance.
+- Lottie React: Integrates Lottie animations for an engaging user interface.
+- Match Sorter: Implements smart and fuzzy search functionality.
+- React: For building user interfaces.
+- React DOM: For rendering React components to the DOM.
+- React Hook Form: Simplifies form management and validation.
+- React Icons: Adds scalable and customizable icons to the UI.
+- React Router DOM: Manages routing and navigation.
+- React Toastify: Provides elegant notifications and alerts.
+- Sort-By: Simplifies sorting functionalities for data display.
+- SweetAlert2: Adds beautiful alert dialogs for user interactions.
+ 
 
 
 

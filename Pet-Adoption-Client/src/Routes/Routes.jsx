@@ -21,6 +21,7 @@ import DonateCampaignDetails from "../Pages/DonationCampaigns/DonateCampaignDeta
 import UpdateAPet from "../UserDashboard/UpdateAPet";
 import UpdateCampaign from "../UserDashboard/UpdateCampaign";
 import Users from "../AdminDashboard/Users";
+import AllPets from "../AdminDashboard/AllPets";
  
 
   export const router = createBrowserRouter([
@@ -70,6 +71,10 @@ import Users from "../AdminDashboard/Users";
           {
             path:'users',
             element:<Users></Users>
+          },
+          {
+            path:'allPets',
+            element:<AllPets></AllPets>
           },
           {
             path:'myAddedPets',
