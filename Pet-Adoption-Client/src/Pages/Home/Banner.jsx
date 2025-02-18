@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     useEffect(() => {
@@ -22,9 +23,10 @@ const Banner = () => {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
                     Welcome to the Pet Adoption Platform
                 </h1>
-                <p className="mt-4 text-xl md:text-2xl lg:text-3xl font-light">
+                <p className="my-4 text-xl md:text-2xl lg:text-3xl font-light">
                     Find your perfect furry friend today!
                 </p>
+                   <Link to={'/petListing'}> <button className='text-white bg-red-600 hover:bg-red-700 font-bold text-xl w-1/6 rounded-full p-4'>See More</button></Link>
             </div>
         </div>
     );

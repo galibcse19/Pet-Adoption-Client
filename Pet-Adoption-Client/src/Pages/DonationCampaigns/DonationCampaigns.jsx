@@ -6,6 +6,8 @@ const DonationCampaigns = () => {
     const [donationCampaignData, setDonationCampaignData] = useState([]); // Full data
     const [displayedData, setDisplayedData] = useState([]); // Data currently displayed
     const [page, setPage] = useState(1); // Pagination page
+    const [loading, setLoading] = useState(true); // Loading state
+    const [fetchingMore, setFetchingMore] = useState(false); // For loading more data
     const navigate = useNavigate(); // useNavigate hook for navigation
 
     // Fetch donation campaigns
@@ -13,17 +15,24 @@ const DonationCampaigns = () => {
         fetch('https://pet-adoption-server-jade.vercel.app/donationCampaign')
             .then((res) => res.json())
             .then((data) => {
-                // Sort by date in descending order
                 const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
                 setDonationCampaignData(sortedData);
-                setDisplayedData(sortedData.slice(0, 6)); // Initial display of 6 items
+                setDisplayedData(sortedData.slice(0, 6)); // Show initial 6 items
+                setLoading(false);
             })
-            .catch((err) => console.error('Error fetching donation campaigns:', err));
+            .catch((err) => {
+                console.error('Error fetching donation campaigns:', err);
+                setLoading(false);
+            });
     }, []);
 
-    // Infinite scrolling
+    // Infinite scrolling logic
     const handleScroll = () => {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+        if (
+            window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
+            !fetchingMore
+        ) {
+            setFetchingMore(true);
             setPage((prevPage) => prevPage + 1);
         }
     };
@@ -33,15 +42,18 @@ const DonationCampaigns = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Update displayed campaigns when the page changes
-    // useEffect(() => {
-    //     const startIndex = (page - 1);
-    //     const endIndex = page ;
-    //     setDisplayedData((prevData) => [
-    //         ...prevData,
-    //         ...donationCampaignData.slice(startIndex, endIndex),
-    //     ]);
-    // }, [page, donationCampaignData]);
+    // Update displayed campaigns when page changes
+    useEffect(() => {
+        if (page > 1) {
+            const startIndex = (page - 1) * 6;
+            const endIndex = page * 6;
+            setDisplayedData((prevData) => [
+                ...prevData,
+                ...donationCampaignData.slice(startIndex, endIndex),
+            ]);
+            setFetchingMore(false);
+        }
+    }, [page, donationCampaignData]);
 
     // Navigate to details page
     const handleDetails = (data) => {
@@ -50,43 +62,39 @@ const DonationCampaigns = () => {
 
     return (
         <div>
-            <DynamicTitle heading={'Donation Campaigns'}></DynamicTitle>
-            <div className="my-10">
+            <DynamicTitle heading={'Donation Campaigns'} />
+            
+            {/* Loading Spinner */}
+            {loading && (
+                <div className="w-8 h-8 border-4 border-red-500 border-dashed rounded-full animate-spin mx-auto my-10"></div>
+            )}
+
+            {/* Donation Campaign List */}
+            {!loading && (
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 lg:mx-32 md:mx-10 mx-4 my-10">
-                    {displayedData && displayedData.length > 0 ? (
+                    {displayedData.length > 0 ? (
                         displayedData.map((data, index) => (
-                            <div key={index}>
-                                <div className="card bg-slate-200 lg:w-96 md:w-84 w-76 rounded-lg">
-                                    <div className="p-4">
-                                        <img
-                                            className="w-full h-48 border rounded-lg"
-                                            src={data.imageUrl}
-                                            alt="Donation Campaign"
-                                        />
-                                        <h2 className="my-2 font-bold text-2xl">
-                                            Name: {data.name}
-                                        </h2>
-                                        <p>
-                                            Maximum Donation Amount:{' '}
-                                            <span className="font-bold my-1">
-                                                {data.maximumDonationAmount}
-                                            </span>{' '}
-                                            Tk
-                                        </p>
-                                        <p>
-                                            Description:{' '}
-                                            <span className="font-bold my-1">
-                                                {data.shortDescribption}
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <button
-                                        onClick={() => handleDetails(data)}
-                                        className="w-full font-bold lg:p-4 md:p-4 p-2 text-white rounded-md bg-red-600 hover:bg-red-700 transition duration-200"
-                                    >
-                                        View Details
-                                    </button>
-                                </div>
+                            <div key={index} className="bg-slate-200 p-4 rounded-lg shadow-lg">
+                                <img
+                                    className="w-full h-48 border rounded-lg object-cover"
+                                    src={data.imageUrl}
+                                    alt="Donation Campaign"
+                                />
+                                <h2 className="my-2 font-bold text-2xl">Name: {data.name}</h2>
+                                <p>
+                                    Maximum Donation Amount:{' '}
+                                    <span className="font-bold">{data.maximumDonationAmount}</span> Tk
+                                </p>
+                                <p>
+                                    Description:{' '}
+                                    <span className="font-bold">{data.shortDescribption}</span>
+                                </p>
+                                <button
+                                    onClick={() => handleDetails(data)}
+                                    className="w-full font-bold p-3 mt-3 text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-200"
+                                >
+                                    View Details
+                                </button>
                             </div>
                         ))
                     ) : (
@@ -95,7 +103,14 @@ const DonationCampaigns = () => {
                         </div>
                     )}
                 </div>
-            </div>
+            )}
+
+            {/* Infinite Scroll Loading */}
+            {fetchingMore && (
+                <div className="flex justify-center items-center my-10">
+                    <div className="w-8 h-8 border-4 border-t-transparent border-red-500 rounded-full animate-spin"></div>
+                </div>
+            )}
         </div>
     );
 };
