@@ -97,7 +97,7 @@ const Register = () => {
 
     return (
         <div>
-            <div className='grid lg:grid-cols-2 grid-cols-1 lg:px-20 md:px-16 px-2'>
+            <div className='grid lg:grid-cols-2 grid-cols-1 mt-20 lg:px-20 md:px-16 px-2'>
             <div className='w-2/3 py-10   mx-auto my-auto'>
                 <Lottie className='rounderd-full' animationData={animation}></Lottie>
                 </div>
